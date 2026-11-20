@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e0b16">
+<title>Download Aurora</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎵%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0e0b16;
+    --card: #1a1626;
+    --card-hi: #231d33;
+    --text: #f3eeff;
+    --muted: #b4abc9;
+    --violet: #b79cff;
+    --teal: #6fe3d0;
+    --line: rgba(255,255,255,.09);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  /* The aurora glow, like the app's background */
+  .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+  .glow i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; animation: drift 24s ease-in-out infinite alternate; }
+  .glow i:nth-child(1) { width: 60vmax; height: 60vmax; left: -20vmax; top: -28vmax; background: #6f4bd8; }
+  .glow i:nth-child(2) { width: 50vmax; height: 50vmax; right: -18vmax; top: -12vmax; background: #1fa89a; animation-delay: -8s; }
+  .glow i:nth-child(3) { width: 44vmax; height: 44vmax; left: 20vmax; top: 30vmax; background: #4b2f93; opacity: .3; animation-delay: -15s; }
+  @keyframes drift { to { transform: translate(5vmax, 4vmax) scale(1.08); } }
+  @media (prefers-reduced-motion: reduce) { .glow i { animation: none; } }
+
+  main { max-width: 880px; margin: 0 auto; padding: 56px 20px 40px; }
+  .logo {
+    width: 84px; height: 84px; border-radius: 28px;
+    background: linear-gradient(145deg, #7b5cf0, #3fd0bd);
+    display: grid; place-items: center;
+    box-shadow: 0 14px 40px rgba(111, 75, 216, .45);
+  }
+  .logo svg { width: 46px; height: 46px; fill: #fff; }
+  h1 { font-size: clamp(2.6rem, 9vw, 4.4rem); line-height: 1.02; letter-spacing: -.03em; margin: 28px 0 14px; }
+  .lead { font-size: 1.15rem; color: var(--muted); max-width: 34rem; margin: 0; }
+
+  .cards { display: grid; gap: 18px; margin-top: 44px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 26px;
+    display: flex; flex-direction: column;
+  }
+  .card.main { background: linear-gradient(160deg, #2a2142, var(--card) 65%); border-color: rgba(183,156,255,.3); }
+  .card h2 { margin: 0 0 6px; font-size: 1.6rem; letter-spacing: -.01em; }
+  .card p { margin: 0 0 16px; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 24px; list-style: none; }
+  .chips li { background: rgba(255,255,255,.07); border-radius: 999px; padding: 5px 12px; font-size: .86rem; }
+  .btn {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    height: 56px; border-radius: 999px;
+    background: var(--violet); color: #1b1233;
+    font-weight: 700; font-size: 1.05rem; text-decoration: none;
+  }
+  .btn.lite { background: var(--teal); color: #07302b; }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:focus-visible, .more:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .btn svg { width: 22px; height: 22px; fill: currentColor; }
+  .meta { margin: 12px 0 0; color: var(--muted); font-size: .86rem; text-align: center; min-height: 1.3em; }
+  .more { color: var(--violet); }
+
+  .how { margin-top: 44px; background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 26px; }
+  .how h2 { margin: 0 0 12px; font-size: 1.3rem; }
+  .how ol { margin: 0; padding-left: 1.2rem; color: var(--muted); }
+  .how li { margin: 6px 0; }
+  .how b { color: var(--text); font-weight: 600; }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 28px 0 8px; }
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<main>
+  <div class="logo" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+  </div>
+  <h1>Aurora</h1>
+  <p class="lead">A music player for Android that plays the songs already on your phone. Pick the full app or the light one.</p>
+
+  <section class="cards" aria-label="Downloads">
+    <article class="card main">
+      <h2>Aurora</h2>
+      <p>The full experience, made to look and feel like yours.</p>
+      <ul class="chips">
+        <li>Themes</li><li>Glow</li><li>Radial dock</li><li>Widgets</li><li>Song editor</li><li>Equalizer</li>
+      </ul>
+      <a class="btn" id="btn-main" href="#" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Download Aurora
+      </a>
+      <p class="meta" id="meta-main">Checking the latest version…</p>
+    </article>
+
+    <article class="card">
+      <h2>Aurora Lite</h2>
+      <p>Just the basics, with one colour you choose.</p>
+      <ul class="chips">
+        <li>Playlists</li><li>Queue</li><li>Multi-select</li><li>Your colour</li><li>Light on battery</li>
+      </ul>
+      <a class="btn lite" id="btn-lite" href="#" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Download Aurora Lite
+      </a>
+      <p class="meta" id="meta-lite">Checking the latest version…</p>
+    </article>
+  </section>
+
+  <section class="how">
+    <h2>How to install</h2>
+    <ol>
+      <li>Tap a download button and open the file when it finishes.</li>
+      <li>If Android asks, allow <b>Install unknown apps</b> for your browser.</li>
+      <li>Tap <b>Install</b>, then open the app and allow access to your music.</li>
+    </ol>
+    <p class="meta" style="text-align:left;margin-top:14px">Works on Android 8.0 and newer. The two apps can be installed side by side.</p>
+  </section>
+
+  <footer>Aurora is made by DetectiveXenophanes-creator.</footer>
+</main>
+
+<script>
+  // Change these three lines if your GitHub name or repository names are different.
+  const OWNER = "DetectiveXenophanes-creator";
+  const APPS = [
+    { repo: "Aurora-music-player", button: "btn-main", meta: "meta-main" },
+    { repo: "Aurora-lite-player",  button: "btn-lite", meta: "meta-lite" }
+  ];
+
+  APPS.forEach(async (app) => {
+    const btn = document.getElementById(app.button);
+    const meta = document.getElementById(app.meta);
+    const releases = `https://github.com/${OWNER}/${app.repo}/releases/latest`;
+    btn.href = releases;                      // works even if the lookup below fails
+    try {
+      const res = await fetch(`https://api.github.com/repos/${OWNER}/${app.repo}/releases/latest`);
+      if (!res.ok) throw new Error(res.status);
+      const rel = await res.json();
+      const apk = (rel.assets || []).find((a) => a.name.toLowerCase().endsWith(".apk"));
+      if (!apk) throw new Error("no apk");
+      btn.href = apk.browser_download_url;    // straight to the APK file
+      const mb = (apk.size / 1048576).toFixed(1);
+      const date = new Date(rel.published_at).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      meta.textContent = `${rel.name || rel.tag_name}, ${mb} MB, ${date}`;
+    } catch (e) {
+      meta.innerHTML = `No download found yet. <a class="more" href="${releases}">Open the releases page</a>`;
+    }
+  });
+</script>
+</body>
+</html>
